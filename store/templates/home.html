@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid p-0">
+
+
+
+    <!-- CATEGORY SECTION -->
+  <div class="container mt-4">
+
+    <div class="row text-center justify-content-center">
+
+        <!-- Mobile -->
+        <div class="col-md-2 col-6 mb-3">
+            <a href="{% url 'category' 'mobile' %}" class="text-decoration-none text-dark">
+                <div class="p-3 bg-white shadow-sm rounded">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1048/1048953.png" width="50">
+                    <p class="mt-2 fw-semibold">Mobiles</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Laptop -->
+        <div class="col-md-2 col-6 mb-3">
+            <a href="{% url 'category' 'laptop' %}" class="text-decoration-none text-dark">
+                <div class="p-3 bg-white shadow-sm rounded">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1055/1055687.png" width="50">
+                    <p class="mt-2 fw-semibold">Laptops</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- TV -->
+        <div class="col-md-2 col-6 mb-3">
+            <a href="{% url 'category' 'tv' %}" class="text-decoration-none text-dark">
+                <div class="p-3 bg-white shadow-sm rounded">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1048/1048949.png" width="50">
+                    <p class="mt-2 fw-semibold">TV</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- Accessories -->
+        <div class="col-md-2 col-6 mb-3">
+            <a href="{% url 'category' 'accessories' %}" class="text-decoration-none text-dark">
+                <div class="p-3 bg-white shadow-sm rounded">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1048/1048946.png" width="50">
+                    <p class="mt-2 fw-semibold">Accessories</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+    <!-- 🟢 PRODUCTS SECTION -->
+     <h2 class="section-title">New Arrivals</h2>
+
+<div class="product-grid">
+    {% for product in new_arrivals %}
+    <div class="product-card">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <h3>{{ product.name }}</h3>
+        <p>₹{{ product.price }}</p>
+        <button class="btn-cart">🛒 Add to Cart</button>
+    </div>
+    {% endfor %}
+</div>
+
+
+    <div class="container mt-5">
+
+        <h3 class="mb-4">Featured Products</h3>
+
+        <div class="row">
+
+            {% for product in products %}
+            <div class="col-md-3 mb-4">
+
+                <div class="card h-100 shadow-sm border-0">
+
+                    <img src="{{ product.image.url }}" 
+                         class="card-img-top"
+                         style="height:200px; object-fit:contain; padding:10px;">
+
+                    <div class="card-body text-center">
+
+                        <h6 class="card-title">{{ product.name }}</h6>
+
+                        <p class="text-success fw-bold">₹{{ product.price }}</p>
+
+                        <a href="{% url 'add_to_cart' product.id %}" 
+                           class="btn btn-warning w-100">
+                            🛒 Add to Cart
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <!-- 🔵 VIEW ALL -->
+        <div class="text-center mt-3">
+            <a href="{% url 'products' %}" class="btn btn-outline-primary">
+                View All Products →
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

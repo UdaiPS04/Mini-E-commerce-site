@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>All Queries</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Date</th>
+    </tr>
+
+    {% for q in data %}
+    <tr>
+        <td>{{ q.name }}</td>
+        <td>{{ q.email }}</td>
+        <td>{{ q.message }}</td>
+        <td>{{ q.created_at }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

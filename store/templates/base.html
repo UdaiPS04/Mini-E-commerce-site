@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Store{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+    rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!--  Navbar -->
+<nav class="navbar">
+    <div class="logo">MyStore</div>
+
+    <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact us</a></li>
+        <li><a href="/cart/">🛒 Cart</a></li>
+        <li><a href="/login/">Login</a></li>
+        <li><a href="/signup/">Sign up</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        
+    </ul>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Shop Smart, Shop Easy </h1>
+    <p>Best products at best prices</p>
+</section>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-dark text-white mt-5">
+
+  <!-- Bootstrap CSS (if not already added) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome (for icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom border-secondary">
+    
+    <div class="me-5 d-none d-lg-block">
+      <span>Connect with us on social networks:</span>
+    </div>
+
+    <div>
+      <a href="#" class="me-4 text-white"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="me-4 text-white"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="me-4 text-white"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="me-4 text-white"><i class="fab fa-linkedin"></i></a>
+      <a href="#" class="me-4 text-white"><i class="fab fa-github"></i></a>
+    </div>
+
+  </section>
+
+  <!-- Section: Links -->
+  <section>
+    <div class="container text-center text-md-start mt-5">
+      <div class="row mt-3">
+
+        <!-- Company -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-store me-2"></i> MyStore
+          </h6>
+          <p>
+            Shop smart with the best products at affordable prices. 🚀
+          </p>
+        </div>
+
+        <!-- Products -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">Products</h6>
+          <p><a href="{% url 'products' %}" class="text-white text-decoration-none">
+    All Products
+</a></p>
+          <p><a href="{% url 'new_arrivals' %}">New Arrivals</a></p>
+          <p><a href="#" class="text-white text-decoration-none">Best Sellers</a></p>
+        </div>
+
+        <!-- Useful Links -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">Useful Links</h6>
+          <p><a href="{% url 'home' %}" class="text-white text-decoration-none">Home</a></p>
+          <p><a href="{% url 'about' %}" class="text-white text-decoration-none">About</a></p>
+          <p><a href="{% url 'contact' %}" class="text-white text-decoration-none">Contact</a></p>
+          <p><a href="{% url 'login' %}" class="text-white text-decoration-none">Login</a></p>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+          <p><i class="fas fa-home me-2"></i> Raebareli, India</p>
+          <p><i class="fas fa-envelope me-2"></i> support@mystore.com</p>
+          <p><i class="fas fa-phone me-2"></i> +917007906932</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Copyright -->
+  <div class="text-center p-3 border-top border-secondary">
+    © 2026 MyStore | All Rights Reserved
+  </div>
+
+</footer>
+</body>
+</html>

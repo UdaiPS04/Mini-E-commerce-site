@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="mb-4">🛒 Your Cart</h2>
+
+    {% if products %}
+
+        {% for product in products %}
+        <div class="card mb-3 shadow-sm p-3">
+
+            <div class="row align-items-center">
+
+                <!-- Image -->
+                <div class="col-md-2">
+                    <img src="{{ product.image.url }}" 
+                         class="img-fluid rounded"
+                         style="height:100px; object-fit:cover;">
+                </div>
+
+                <!-- Details -->
+                <div class="col-md-4">
+                    <h5>{{ product.name }}</h5>
+                    <p class="text-success fw-bold">₹ {{ product.price }}</p>
+                </div>
+
+                <!-- Quantity -->
+                <div class="col-md-2">
+                    <a href="{% url 'decrease_qty' product.id %}" class="btn btn-sm btn-secondary">-</a>
+{{ product.quantity }}
+<a href="{% url 'increase_qty' product.id %}" class="btn btn-sm btn-secondary">+</a>
+                </div>
+
+                <!-- Total -->
+                <div class="col-md-2">
+                    <p>Total: ₹ {{ product.total_price }}</p>
+                </div>
+
+                <!-- Remove Button -->
+                <div class="col-md-2 text-end">
+                    <a href="{% url 'remove_from_cart' product.id %}" 
+                       class="btn btn-danger btn-sm">
+                        Remove
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+        <h4 class="text-end mt-3">Total: ₹ {{ total }}</h4>
+
+    {% else %}
+        <p>Your cart is empty , Go to store and add products of your choice</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}
